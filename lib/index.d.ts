@@ -83,8 +83,8 @@ export class Model {
   /**
    * Invokes a function in the JSON Graph.
    */
-  call (functionPath: string | Path, args?: Array<any>, refPaths?: PathSet, thisPaths?: Array<PathSet>): ModelResponse<JSONEnvelope<any>>;
-  call <T> (functionPath: string | Path, args?: Array<any>, refPaths?: PathSet, thisPaths?: Array<PathSet>): ModelResponse<JSONEnvelope<T>>;
+  call (functionPath: string | Path, args?: Array<any>, refPaths?: Array<PathSet>, thisPaths?: Array<PathSet>): ModelResponse<JSONEnvelope<any>>;
+  call <T> (functionPath: string | Path, args?: Array<any>, refPaths?: Array<PathSet>, thisPaths?: Array<PathSet>): ModelResponse<JSONEnvelope<T>>;
 
   /**
    * The invalidate method synchronously removes several {@link Path}s or {@link PathSet}s from a {@link Model} cache.
