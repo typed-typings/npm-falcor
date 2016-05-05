@@ -59,7 +59,7 @@ export interface ModelComparator {
  * A Model object is used to execute commands against a {@link JSONGraph} object. {@link Model}s can work with a local JSONGraph cache, or it can work with a remote {@link JSONGraph} object through a {@link DataSource}.
  */
 export class Model {
-  constructor(options?: ModelOptions);
+  constructor (options?: ModelOptions);
 
   /**
    * The get method retrieves several {@link Path}s or {@link PathSet}s from a {@link Model}. The get method loads each value into a JSON object and returns in a ModelResponse.
@@ -78,7 +78,7 @@ export class Model {
   /**
    * The preload method retrieves several {@link Path}s or {@link PathSet}s from a {@link Model} and loads them into the Model cache.
    */
-  preload (...path: Array<PathSet>): void;
+  preload (...path: PathSet[]): void;
 
   /**
    * Invokes a function in the JSON Graph.
@@ -89,7 +89,7 @@ export class Model {
   /**
    * The invalidate method synchronously removes several {@link Path}s or {@link PathSet}s from a {@link Model} cache.
    */
-  invalidate (...path: Array<PathSet>): void;
+  invalidate (...path: PathSet[]): void;
 
   /**
    * Returns a new {@link Model} bound to a location within the {@link JSONGraph}. The bound location is never a {@link Reference}: any {@link Reference}s encountered while resolving the bound {@link Path} are always replaced with the {@link Reference}s target value. For subsequent operations on the {@link Model}, all paths will be evaluated relative to the bound path. Deref allows you to:
@@ -97,7 +97,7 @@ export class Model {
    * - Hide the location of a {@link JSONGraph} fragment from components
    * - Optimize for executing multiple operations and path looksup at/below the same location in the {@link JSONGraph}
    */
-  deref (responseObject: any): this;
+  deref (derefPath: Path, ...relativePathsToPreload: PathSet[]): this;
 
   /**
    * Get data for a single {@link Path}.
